@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { PropTypes } from 'prop-types';
+import {connect} from 'react-redux';
 import './style.scss';
 
 import Reginster from '../Auth/Register';
 import Login from '../Auth/Login';
 
-export default class Landing extends Component {
+class Landing extends Component {
+  componentDidMount(){
+    if(this.props.auth.isAuthenticated){
+          this.props.history.push('/dashbord');
+        }
+  }
   render() {
     return (
       <div className="wrap_landing">
@@ -19,3 +26,10 @@ export default class Landing extends Component {
     )
   }
 }
+PropTypes.Landing = {
+  auth: PropTypes.object.isRequiered
+}
+const mapStateToProps = state =>({
+  auth: state.auth
+})
+export default connect(mapStateToProps,)(Landing)
