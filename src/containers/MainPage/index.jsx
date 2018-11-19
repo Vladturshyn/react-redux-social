@@ -6,7 +6,9 @@ import {setCurrentUser, logoutUser} from '../../actions/authActions';
 import {clearCurrentProfile} from '../../actions/profileActions';
 import store from '../../store';
 import { Provider } from 'react-redux';
+
 import PrivateRoute from '../../components/Common/PrivateRoute';
+import CreateProfile from '../../components/CreateProfile';
 
 
 import Navbar from '../../components/Navbar';
@@ -51,6 +53,9 @@ export default class MainPage extends Component {
               <Route exact path="/register" component={ Reginster } />
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={ Dashboard } />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path="/create-profile" component={ CreateProfile } />
               </Switch>
             </div>
             <Footer />
