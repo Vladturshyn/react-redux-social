@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {loginUser} from '../../actions/authActions';
+import TextFieldGroup from '../Common/TextFieldGroup';
 
 class Login extends Component {
   state = {
@@ -39,36 +40,38 @@ class Login extends Component {
     };
     this.props.loginUser(userData);
   }
-  click = e =>{
-    console.log('google');
-  }
+  // click = e =>{
+  //   console.log('google');
+  // }
 
   render() {
     return (
       <div>
         <h1>Login</h1>
         <form onSubmit={this.onSubmit}>
-          <input
-            type="email" 
-            name="email" 
-            value={this.state.email} 
-            onChange={this.handleInputChange}/>
-          <input 
+          <TextFieldGroup 
+             type="email"
+             name="email"
+             value={this.state.email}
+             onChange={this.handleInputChange}
+             error={this.state.errors}
+             placeholder="Email Adress"/>
+          <TextFieldGroup 
             type="password" 
-            name="password" 
+            name="password"
             value={this.state.password} 
-            onChange={this.handleInputChange}/>
-          <input 
-            type="submit"/>
+            onChange={this.handleInputChange}
+            error={this.state.errors}
+            placeholder="Password"/>
+         
+          <input type="submit"/>
         </form>
-        <button onClick={this.click}>google </button>
-        <a href="/api/users/google">google</a>
       </div>
     )
   }
 }
 
-Login.PropTypes = {
+Login.propTypes = {
   loginUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
 import {logoutUser} from '../../actions/authActions';
-import PropTypes from 'prop-types';
+import {PropTypes} from 'prop-types';
 import './style.scss';
 
 class Navbar extends Component {
@@ -11,20 +11,20 @@ class Navbar extends Component {
         this.props.logoutUser();
     }
   render() {
-      const {isAuthenicated, user} =this.props.auth;
+      const {isAuthenticated, user} =this.props.auth;
 
       const authLinks = (
         <nav>
             <ul>
                 <li>
-                  <a href="#" onClick={this.onLogoutClick.bind(this)}>
-                  <img 
+                <img 
                     src={user.avatar} 
                     alt={user.name} 
                     style={{width: '25px', marginRight: '5px'}}
                     title="You must have a Gravatar" />
+                  <a href=" " onClick={this.onLogoutClick.bind(this)}>
+                  Logout
                   </a>
-                    Logout
                 </li>
             </ul>
         </nav>
@@ -56,14 +56,14 @@ class Navbar extends Component {
             </nav>
         </div>
         <div className="wrap_login">
-           {isAuthenicated ? authLinks : guestLinks}
+           {isAuthenticated ? authLinks : guestLinks}
         </div>
       </div>
     )
   }
 }
 
-Navbar.PropTypes = {
+Navbar.propTypes = {
     logoutUser: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired
 }

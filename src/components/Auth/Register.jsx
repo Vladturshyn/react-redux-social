@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {registerUser} from '../../actions/authActions';
+import TextFieldGroup from '../Common/TextFieldGroup';
 
 class Reginster extends Component {
     state = {
@@ -18,7 +19,7 @@ class Reginster extends Component {
           this.props.history.push('/dashbord');
         }
   }
-  
+
   handleInputChange = (e) =>{
     this.setState({
       [e.target.name]: e.target.value
@@ -46,43 +47,42 @@ class Reginster extends Component {
   };
 
   render() {
-    // const {errors} = this.state;
+   
     return (
       <div>
         <h1>Sign Up</h1>
         <p>Create your developer account</p>
         <form onSubmit={this.onSubmit}>
-          <input 
-            type="text"
-            placeholder="name"
-            name="name"
-            value={this.state.name}
-            onChange={this.handleInputChange}
-          />
-           <input 
-            type="email"
-            placeholder="email"
-            name="email"
-            value={this.state.email}
-            onChange={this.handleInputChange}
-          />
-           <input 
-            type="password"
-            name="password"
-            placeholder="password"
-            value={this.state.password}
-            onChange={this.handleInputChange}
-          />
-           <input 
-            type="password"
-            placeholder="password2"
-            name="password2"
-            value={this.state.password2}
-            onChange={this.handleInputChange}
-          />
-          <input
-            type="submit"
-          />
+          <TextFieldGroup 
+                type="text"
+                placeholder="name"
+                name="name"
+                value={this.state.name}
+                onChange={this.handleInputChange}
+                error={this.state.errors}/>
+          <TextFieldGroup 
+              type="email"
+              placeholder="email"
+              name="email"
+              value={this.state.email}
+              onChange={this.handleInputChange}
+              error={this.state.errors}
+              info="use your email avatar"/>
+          <TextFieldGroup 
+              type="password"
+              placeholder="password"
+              name="password"
+              value={this.state.password}
+              onChange={this.handleInputChange}
+              error={this.state.errors}/>
+          <TextFieldGroup 
+              type="password"
+              placeholder="password2"
+              name="password2"
+              value={this.state.password2}
+              onChange={this.handleInputChange}
+              error={this.state.errors}/>
+          <input type="submit" />
         </form>
       </div>
     )
