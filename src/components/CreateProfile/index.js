@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-
+import { withRouter } from 'react-router-dom';
 import TextFieldGroup from '../Common/TextFieldGroup';
 import InputGroup from '../Common/InputGroup';
 import SelectListGroup from '../Common/SelectListGroup';
 import TextAreaFieldGroup from '../Common/TextAreaFieldGroup';
+
+import { createProfile } from '../../actions/profileActions';
 
 
 class CreateProfile extends Component {
@@ -29,9 +31,29 @@ class CreateProfile extends Component {
             errors: {}
         }
     }
+    conponentWillReciveProps(nextProps){
+        if(nextProps.errors){
+            this.setState({errors: nextProps.errors})
+        }
+    }
     onSubmit = e => {
         e.preventDefault();
-        
+        const profileData = {
+            handle: this.state.handle,
+            company: this.state.company,
+            website: this.state.website,
+            location: this.state.location,
+            status: this.state.status,
+            skills: this.state.skills,
+            githubusername: this.state.githubusername,
+            bio: this.state.bio,
+            twitter: this.state.twitter,
+            facebook: this.state.facebook,
+            linkedin: this.state.linkedin,
+            youtube: this.state.youtube,
+            instagram: this.state.instagram
+        }
+        this.props.createProfile(profileData,this.props.history);
     }
     onChange = e => {
         this.setState({[e.target.name]: e.target.value})
@@ -59,6 +81,7 @@ class CreateProfile extends Component {
                         icon="fab fa-twitter"
                         onChange={this.onChange}
                         value={this.state.twitter}
+                        error={errors.twitter}
                     />
                      <InputGroup 
                         placeholder="Facebook frofile URL"
@@ -66,6 +89,7 @@ class CreateProfile extends Component {
                         icon="fab fa-facebook"
                         onChange={this.onChange}
                         value={this.state.facebook}
+                        error={errors.facebook}
                     />
                     <InputGroup 
                         placeholder="Linkedin frofile URL"
@@ -73,6 +97,7 @@ class CreateProfile extends Component {
                         icon="fab fa-linkedin"
                         onChange={this.onChange}
                         value={this.state.linkedin}
+                        error={errors.linkedin}
                     />
                     <InputGroup 
                         placeholder="Youtube frofile URL"
@@ -80,6 +105,7 @@ class CreateProfile extends Component {
                         icon="fab fa-youtube"
                         onChange={this.onChange}
                         value={this.state.youtube}
+                        error={errors.youtube}
                     />
                      <InputGroup 
                         placeholder="Instagram frofile URL"
@@ -87,6 +113,7 @@ class CreateProfile extends Component {
                         icon="fab fa-instagram"
                         onChange={this.onChange}
                         value={this.state.instagram}
+                        error={errors.instagram}
                     /> 
                </div>
            )
@@ -117,7 +144,7 @@ class CreateProfile extends Component {
                 />
                 <TextFieldGroup 
                     placeholder="Company"
-                    name="Company"
+                    name="company"
                     value={this.state.company}
                     onChange={this.onChange}
                     error={errors.company}
@@ -125,7 +152,7 @@ class CreateProfile extends Component {
                 />
                 <TextFieldGroup 
                     placeholder="Website"
-                    name="Website"
+                    name="website"
                     value={this.state.website}
                     onChange={this.onChange}
                     error={errors.website}
@@ -133,7 +160,7 @@ class CreateProfile extends Component {
                 />
                  <TextFieldGroup 
                     placeholder="Location"
-                    name="Location"
+                    name="location"
                     value={this.state.location}
                     onChange={this.onChange}
                     error={errors.location}
@@ -141,7 +168,7 @@ class CreateProfile extends Component {
                 />
                  <TextFieldGroup 
                     placeholder="Skills"
-                    name="Skills"
+                    name="skills"
                     value={this.state.skills}
                     onChange={this.onChange}
                     error={errors.skills}
@@ -164,7 +191,9 @@ class CreateProfile extends Component {
                     info="some info here"
                 />
                 <div>
-                    <button onClick={prevState => {
+                    <button 
+                        type="button"
+                        onClick={prevState => {
                         this.setState(prevState => ({
                             displaySocialInputs: !prevState.displaySocialInputs
                         }))
@@ -192,4 +221,4 @@ const mapStateToProps = (state) => ({
 })
 
 
-export default connect(mapStateToProps)(CreateProfile)
+export default connect(mapStateToProps,{createProfile})(withRouter(CreateProfile))
