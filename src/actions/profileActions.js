@@ -21,7 +21,6 @@ export const getCurrentProfile = () => dispatch => {
 }
 
 //set profile loading
-
 export const setProfileLoading = () => {
     return {
         type: PROFILE_LOADING
@@ -45,6 +44,7 @@ export const createProfile = (profileData, history) => dispatch => {
             })
         })
 }
+
 // delete profile
 export const deleteProfile = () => dispatch => {
     if(window.confirm('Are you sure? This can NOT be undone!')){
@@ -64,6 +64,7 @@ export const deleteProfile = () => dispatch => {
             })
     }
 }
+
 // add profile experience
 export const addExperience = (expData, history) => dispatch => {
     axios
@@ -74,6 +75,23 @@ export const addExperience = (expData, history) => dispatch => {
             payload: err.response.data
         }))
 }
+export const deleteExperience = (id, history) => dispatch => {
+    axios
+        .delete(`/api/profile/experience/${id}`)
+        .then(res=> {
+            dispatch({
+                type: GET_PROFILE,
+                payload: res.data
+            })
+        })
+        .catch(err=>{
+            dispatch({
+                type: GET_ERRORS,
+                payload: err.response.data
+            })
+         })
+}
+
 // add profile education
 export const addEducation = (eduData, history) => dispatch => {
     axios

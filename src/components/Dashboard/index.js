@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { getCurrentProfile, deleteProfile } from '../../actions/profileActions';
 import Speener from '../Common/Speener';
 import ProfileActions from '../ProfileActions';
+import Experience from '../Experience';
 
 class Dashboard extends Component {
 
@@ -27,8 +28,9 @@ class Dashboard extends Component {
            dashboardContnt = (
               <div>
                 <p>Welcome <Link to={`/profile/${profile.handle}`}>{user.name}</Link></p>
-                <ProfileActions/>
-                <div style={{marginBottom: '60px'}}/>
+                <ProfileActions />
+                <Experience experience={profile.experience} />
+                <div style={{marginBottom:'60px'}}/>
                 <button onClick={this.onDeleteProfile}>Delete My Account</button>
               </div>
               )
