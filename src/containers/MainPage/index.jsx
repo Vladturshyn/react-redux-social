@@ -11,6 +11,7 @@ import PrivateRoute from '../../components/Common/PrivateRoute';
 import CreateProfile from '../../components/CreateProfile';
 import EditProfile from '../../components/EditProfile';
 import AddExperience from '../../components/AddExperience';
+import AddEducation from '../../components/AddEducation';
 
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
@@ -63,6 +64,9 @@ export default class MainPage extends Component {
               </Switch>
               <Switch>
                 <PrivateRoute exact path="/add-experience" component={ AddExperience } />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path="/add-education" component={ AddEducation } />
               </Switch>
             </div>
             <Footer />
