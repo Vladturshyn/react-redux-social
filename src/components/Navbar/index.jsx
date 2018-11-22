@@ -19,7 +19,10 @@ class Navbar extends Component {
         <nav>
             <ul>
                 <li>
-                <img 
+                    <Link to="/dashboard">Dashbord</Link>
+                </li>
+                <li>
+                 <img 
                     src={user.avatar} 
                     alt={user.name} 
                     style={{width: '25px', marginRight: '5px'}}
@@ -28,6 +31,7 @@ class Navbar extends Component {
                   Logout
                   </a>
                 </li>
+                
             </ul>
         </nav>
       );

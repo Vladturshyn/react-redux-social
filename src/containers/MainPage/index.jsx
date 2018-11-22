@@ -9,6 +9,7 @@ import { Provider } from 'react-redux';
 
 import PrivateRoute from '../../components/Common/PrivateRoute';
 import CreateProfile from '../../components/CreateProfile';
+import EditProfile from '../../components/EditProfile';
 
 
 import Navbar from '../../components/Navbar';
@@ -56,6 +57,9 @@ export default class MainPage extends Component {
               </Switch>
               <Switch>
                 <PrivateRoute exact path="/create-profile" component={ CreateProfile } />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path="/edit-profile" component={ EditProfile } />
               </Switch>
             </div>
             <Footer />
