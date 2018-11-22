@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import TextFieldGroup from '../Common/TextFieldGroup';
 import InputGroup from '../Common/InputGroup';
 import SelectListGroup from '../Common/SelectListGroup';
@@ -160,6 +160,7 @@ class EditProfile extends Component {
        }
     return (
       <div>
+       <Link to="/dashboard">Go back</Link>
        <div>
             <h1>Edit Profile</h1>
             <small>* = required fields</small>

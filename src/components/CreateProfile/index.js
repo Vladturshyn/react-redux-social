@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter,Link } from 'react-router-dom';
 import TextFieldGroup from '../Common/TextFieldGroup';
 import InputGroup from '../Common/InputGroup';
 import SelectListGroup from '../Common/SelectListGroup';
@@ -124,6 +124,7 @@ class CreateProfile extends Component {
             <h1>Create Your profile</h1>
             <p>Let's some information to make your profile send out</p>
             <small>* = required fields</small>
+             <Link to="/dashboard">Go back</Link>
             <form onSubmit={this.onSubmit}>
                 <TextFieldGroup 
                     placeholder="* Profile Handle"
