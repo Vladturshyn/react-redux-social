@@ -13,7 +13,7 @@ class Navbar extends Component {
         this.props.clearCurrentProfile();
     }
   render() {
-      const {isAuthenticated, user} =this.props.auth;
+      const {isAuthenticated, user}=this.props.auth;
 
       const authLinks = (
         <nav>
@@ -27,9 +27,9 @@ class Navbar extends Component {
                     alt={user.name} 
                     style={{width: '25px', marginRight: '5px'}}
                     title="You must have a Gravatar" />
-                  <a href=" " onClick={this.onLogoutClick.bind(this)}>
+                  <button onClick={this.onLogoutClick.bind(this)}>
                   Logout
-                  </a>
+                  </button>
                 </li>
                 
             </ul>

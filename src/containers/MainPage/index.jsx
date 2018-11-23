@@ -12,6 +12,7 @@ import CreateProfile from '../../components/CreateProfile';
 import EditProfile from '../../components/EditProfile';
 import AddExperience from '../../components/AddExperience';
 import AddEducation from '../../components/AddEducation';
+import AllProfiles from '../../components/AllProfiles';
 
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
@@ -68,6 +69,7 @@ export default class MainPage extends Component {
               <Switch>
                 <PrivateRoute exact path="/add-education" component={ AddEducation } />
               </Switch>
+              <Route exact path="/profiles" component={ AllProfiles } />
             </div>
             <Footer />
           </div>
