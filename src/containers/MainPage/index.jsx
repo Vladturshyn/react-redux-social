@@ -14,6 +14,7 @@ import AddExperience from '../../components/AddExperience';
 import AddEducation from '../../components/AddEducation';
 import AllProfiles from '../../components/AllProfiles';
 import Profile from '../../components/Profile/Profile';
+import NotFound from '../../components/NotFound';
 
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
@@ -72,6 +73,7 @@ export default class MainPage extends Component {
               </Switch>
               <Route exact path="/profiles" component={ AllProfiles } />
               <Route exact path="/profile/:handle" component={ Profile } />
+              <Route exact path="/not-found" component={ NotFound } />
             </div>
             <Footer />
           </div>

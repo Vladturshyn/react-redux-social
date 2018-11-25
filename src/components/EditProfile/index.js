@@ -77,6 +77,7 @@ class EditProfile extends Component {
         }
     }
     onSubmit = e => {
+        console.log(this.state)
         e.preventDefault();
         const profileData = {
             handle: this.state.handle,
