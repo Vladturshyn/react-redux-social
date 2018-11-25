@@ -4,8 +4,8 @@ import { PropTypes } from 'prop-types';
 import {connect} from 'react-redux';
 import './style.scss';
 
-import Register from '../Auth/Register';
-import Login from '../Auth/Login';
+// import Register from '../Auth/Register';
+// import Login from '../Auth/Login';
 
 class Landing extends Component {
   componentDidMount(){
@@ -19,8 +19,8 @@ class Landing extends Component {
         <h1>Developer Connector</h1>
         <p>Creacte developer porfolio/profile</p>
         <div>
-            <Link to="/register" component={Register}><button> Sign Up</button></Link>
-            <Link to="/login" component={Login}><button> Login </button> </Link>
+            <Link to="/register"><button> Sign Up</button></Link>
+            <Link to="/login"><button> Login </button> </Link>
         </div> 
       </div>
     )
@@ -35,4 +35,4 @@ const mapStateToProps = state =>({
   auth: state.auth
 })
 
-export default connect(mapStateToProps,)(Landing)
+export default connect(mapStateToProps)(Landing)
