@@ -23,20 +23,25 @@ class PostItem extends Component {
         }
     }
   render() {
-      const {post, auth} = this.props;
+      const {post, auth, showAction} = this.props;
     return (
       <div>
         <img src={post.avatar} alt="avatar"/>
         <p>{post.name}</p>
         <p>{post.text}</p>
-        <button onClick={this.onLikeClick.bind(this, post._id)}>Like<span>{post.likes.length}</span></button>
-        <button onClick={this.onUnLikeClick.bind(this, post._id)}>RemoveLike<span>{post.likes.length}</span></button>
-        <Link to={`/post/${post._id}}`}> Comments</Link>
-        {post.user === auth.user.id ? 
-            (<button onClick={this.onDelete.bind(this, post._id)}>Delete</button>) : null }
+        {showAction ? (<span>
+            <button onClick={this.onLikeClick.bind(this, post._id)}>Like<span>{post.likes.length}</span></button>
+            <button onClick={this.onUnLikeClick.bind(this, post._id)}>RemoveLike<span>{post.likes.length}</span></button>
+            <Link to={`/posts/${post._id}`}>Comments</Link>
+            {post.user === auth.user.id ? (<button onClick={this.onDelete.bind(this, post._id)}>Delete</button>) : null }
+            </span> ) : null}
       </div>
     )
   }
+}
+
+PostItem.defaultProps = {
+    showAction: true
 }
 
 PostItem.propTypes = {

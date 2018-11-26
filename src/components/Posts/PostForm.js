@@ -31,7 +31,7 @@ class PostForm extends Component {
         this.setState({text: ''});
     }
   render() {
-      const {errors} = this.state;
+      //const {errors} = this.state;
     return (
       <div>
           <div>Say Somesing ...</div>
