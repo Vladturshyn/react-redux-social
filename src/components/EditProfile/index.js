@@ -41,6 +41,7 @@ class EditProfile extends Component {
             this.setState({errors: nextProps.errors})
         }
         if(nextProps.profile.profile){
+            console.log(nextProps.profile.profile);
             const profile = nextProps.profile.profile;
             // back skills arr to csv
             const skullsCSV = profile.skills.join(',');
@@ -77,7 +78,7 @@ class EditProfile extends Component {
         }
     }
     onSubmit = e => {
-        console.log(this.state)
+        console.log(this.state.githubusername);
         e.preventDefault();
         const profileData = {
             handle: this.state.handle,
