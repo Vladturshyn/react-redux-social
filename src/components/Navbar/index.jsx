@@ -82,6 +82,4 @@ const mapStateToProps = (state) =>({
 })
 
 
-export default connect(mapStateToProps,{ logoutUser, clearCurrentProfile })(
-    Navbar
-);
+export default connect(mapStateToProps,{ logoutUser, clearCurrentProfile })(Navbar);
